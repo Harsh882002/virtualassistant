@@ -42,7 +42,7 @@ recognition.onresult = (event) =>{
     
 
     //passing takeCommand function to take command 
-    takeCommand(transcript)
+    takeCommand(transcript.toLowerCase())
 }
 
 btn.addEventListener("click",() =>{
@@ -57,5 +57,8 @@ function takeCommand(message){
     }
     else if(message.includes("who are you")){
         speak("i am juniour harsh created by my lord harsh sir ")
+    }else if(message.includes("open youtube")){
+        speak("opening youtube my lord....")
+        window.open("https://www.youtube.com/","_blank")
     }
 }
