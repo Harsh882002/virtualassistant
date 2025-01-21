@@ -32,13 +32,30 @@ window.addEventListener('load', () =>{
     // wishMe();
 })
 
+//to recognize speech or text
 let speechRecognition = window.speechRecognition || window.webkitSpeechRecognition
 let recognition = new speechRecognition();
 recognition.onresult = (event) =>{
-    console.log(event)
+    let currentIndex = event.resultIndex
+    let transcript = event.results[currentIndex][0].transcript
+    content.innerText = transcript;
+    
+
+    //passing takeCommand function to take command 
+    takeCommand(transcript)
 }
 
 btn.addEventListener("click",() =>{
     // speak("Hello How can i help you")
     recognition.start();
 })
+
+//function to take command
+function takeCommand(message){
+    if(message.includes("hey") || message.includes("hello")){
+        speak("hukum my lord")
+    }
+    else if(message.includes("who are you")){
+        speak("i am juniour harsh created by my lord harsh sir ")
+    }
+}
